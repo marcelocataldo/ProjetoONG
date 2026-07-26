@@ -3,8 +3,12 @@ cffi==2.0.0
 Django==4.2.25
 django-cors-headers==4.9.0
 djangorestframework==3.16.1
+dj-database-url==2.2.0
+gunicorn==21.2.0
+psycopg2-binary==2.9.9
 pycparser==2.23
 python-decouple==3.8
 sqlparse==0.5.3
 typing_extensions==4.15.0
 tzdata==2025.2
+whitenoise==6.7.0

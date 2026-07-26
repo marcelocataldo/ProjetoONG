@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: "chave-local-para-desenvolvimento-nao-usar-em-producao"
+      DEBUG: "True"
+      ALLOWED_HOSTS: "localhost,127.0.0.1"
+      DATABASE_URL: "sqlite:////app/db.sqlite3"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./back-end:/app
+      - static_volume:/app/staticfiles
+    restart: unless-stopped
+
+volumes:
+  static_volume:

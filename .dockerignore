@@ -1,0 +1,9 @@
+.git
+.env
+*.md
+back-end/db.sqlite3
+back-end/staticfiles
+back-end/**/__pycache__
+back-end/**/*.pyc
+back-end/**/*.pyo
+back-end/**/*.pyd
