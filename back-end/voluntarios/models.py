@@ -29,6 +29,16 @@ class Voluntario(models.Model):
     def __str__(self):
         return self.nomecompleto_voluntario
 
+    @property
+    def tipo(self):
+        if hasattr(self, 'estagiario'):
+            return 'Estagiário(a)'
+        if hasattr(self, 'advogado'):
+            return 'Advogado(a)'
+        if hasattr(self, 'bacharel'):
+            return 'Bacharel'
+        return 'Voluntário(a)'
+
 class Estagiario(models.Model):
     PERIODOS = [
         ('1', '1º Período'),

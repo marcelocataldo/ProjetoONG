@@ -3,10 +3,10 @@ from django.db import models
 class Atendimento(models.Model):
     id_atendimento = models.AutoField(primary_key=True)
     
-    id_vitima = models.ForeignKey(
-        'vitimas.Vitima', 
+    id_assistida = models.ForeignKey(
+        'assistidas.Assistida',
         on_delete=models.CASCADE,
-        db_column='id_vitima',
+        db_column='id_assistida',
         related_name='atendimentos'
     )
     
@@ -31,4 +31,4 @@ class Atendimento(models.Model):
         unique_together = ('data_atendimento', 'hora_atendimento')
     
     def __str__(self):
-        return f"Atendimento #{self.id_atendimento} - {self.id_vitima.nome_vitima}"
+        return f"Atendimento #{self.id_atendimento} - {self.id_assistida.nome_assistida}"

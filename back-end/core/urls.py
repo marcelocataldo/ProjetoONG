@@ -1,9 +1,12 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('cadastro-vitima/', views.cadastro_vitima, name='cadastro_vitima'),
+    path('cadastro-assistida/', views.cadastro_assistida, name='cadastro_assistida'),
+    # URL antiga mantida para não quebrar links já divulgados
+    path('cadastro-vitima/', RedirectView.as_view(pattern_name='cadastro_assistida', permanent=True)),
     path('voluntarios/', views.voluntarios, name='voluntarios'),
     path('voluntarios/advogado/', views.voluntario_advogado, name='voluntario_advogado'),
     path('voluntarios/bacharel/', views.voluntario_bacharel, name='voluntario_bacharel'),

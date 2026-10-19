@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Máscaras para CPF e CEP
-    const cpfInput = document.getElementById('cpf_vitima');
-    const cepInput = document.getElementById('cep_vitima');
+    const cpfInput = document.getElementById('cpf_assistida');
+    const cepInput = document.getElementById('cep_assistida');
 
     // Máscara CPF
     cpfInput.addEventListener('input', function (e) {
@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (!data.erro) {
-                        document.getElementById('enderecorua_vitima').value = data.logradouro || '';
-                        document.getElementById('enderecocidade_vitima').value = data.localidade || '';
-                        document.getElementById('enderecoestado_vitima').value = data.uf || '';
+                        document.getElementById('enderecorua_assistida').value = data.logradouro || '';
+                        document.getElementById('enderecocidade_assistida').value = data.localidade || '';
+                        document.getElementById('enderecoestado_assistida').value = data.uf || '';
                     }
                 })
                 .catch(error => {
@@ -49,15 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = form.querySelector('button[type="submit"]');
 
         // Validações básicas
-        const nome = document.getElementById('nome_vitima').value.trim();
-        const apelido = document.getElementById('apelido_vitima').value.trim();
-        const cpf = document.getElementById('cpf_vitima').value;
-        const idade = document.getElementById('idade_vitima').value;
-        const cep = document.getElementById('cep_vitima').value;
-        const rua = document.getElementById('enderecorua_vitima').value.trim();
-        const cidade = document.getElementById('enderecocidade_vitima').value.trim();
-        const estado = document.getElementById('enderecoestado_vitima').value;
-        const complemento =  document.getElementById('enderecocomplemento_vitima').value;
+        const nome = document.getElementById('nome_assistida').value.trim();
+        const apelido = document.getElementById('apelido_assistida').value.trim();
+        const cpf = document.getElementById('cpf_assistida').value;
+        const idade = document.getElementById('idade_assistida').value;
+        const cep = document.getElementById('cep_assistida').value;
+        const rua = document.getElementById('enderecorua_assistida').value.trim();
+        const cidade = document.getElementById('enderecocidade_assistida').value.trim();
+        const estado = document.getElementById('enderecoestado_assistida').value;
+        const complemento =  document.getElementById('enderecocomplemento_assistida').value;
 
         // Verificar campos obrigatórios
         if (!nome || !apelido || !cpf || !idade || !cep || !rua || !cidade || !estado || !complemento) {
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Enviando dados:', dados); // Para debug
 
         // Enviar para a API
-        fetch('http://146.235.62.209:8000/api/vitimas/adicionar/', {
+        fetch('/api/assistidas/adicionar/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ from .models import Atendimento
 class AtendimentoAdmin(admin.ModelAdmin):
     list_display = (
         'id_atendimento',
-        'get_nome_vitima',
+        'get_nome_assistida',
         'get_nome_estagiario',
         'data_atendimento',
         'hora_atendimento'
@@ -18,16 +18,16 @@ class AtendimentoAdmin(admin.ModelAdmin):
     )
     
     search_fields = (
-        'id_vitima__nome_vitima',
-        'id_vitima__cpf_vitima',
+        'id_assistida__nome_assistida',
+        'id_assistida__cpf_assistida',
         'id_estagiario__id_voluntario__nomecompleto_voluntario'
     )
     
     date_hierarchy = 'data_atendimento'
     
     fieldsets = (
-        ('Informações da Vítima', {
-            'fields': ('id_vitima',)
+        ('Informações da Assistida', {
+            'fields': ('id_assistida',)
         }),
         ('Estagiário Responsável', {
             'fields': ('id_estagiario',)
@@ -38,12 +38,14 @@ class AtendimentoAdmin(admin.ModelAdmin):
     )
     
     # Métodos personalizados para exibição
-    def get_nome_vitima(self, obj):
-        return obj.id_vitima.nome_vitima
-    get_nome_vitima.short_description = 'Vítima'
-    get_nome_vitima.admin_order_field = 'id_vitima__nome_vitima'
+    def get_nome_assistida(self, obj):
+        return obj.id_assistida.nome_assistida
+    get_nome_assistida.short_description = 'Assistida'
+    get_nome_assistida.admin_order_field = 'id_assistida__nome_assistida'
     
     def get_nome_estagiario(self, obj):
+        if obj.id_estagiario is None:
+            return '—'
         return obj.id_estagiario.id_voluntario.nomecompleto_voluntario
     get_nome_estagiario.short_description = 'Estagiário'
     get_nome_estagiario.admin_order_field = 'id_estagiario__id_voluntario__nomecompleto_voluntario'

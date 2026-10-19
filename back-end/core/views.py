@@ -3,8 +3,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'front/index.html')
 
-def cadastro_vitima(request):
-    return render(request, 'front/cadastro-vitima.html')
+def cadastro_assistida(request):
+    return render(request, 'front/cadastro-assistida.html')
 
 def voluntarios(request):
     return render(request, 'front/voluntarios.html')

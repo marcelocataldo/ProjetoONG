@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'atendimentos',
     'core',
     'voluntarios',
-    'vitimas',
+    'assistidas',
     'rest_framework',
     'corsheaders'
 ]

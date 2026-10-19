@@ -14,7 +14,8 @@ class VoluntarioAdmin(admin.ModelAdmin):
         'email_voluntario', 
         'telefone_voluntario',
         'cpf_voluntario',
-        'cidade_voluntario'
+        'cidade_voluntario',
+        'tipo_voluntario',
     ]
     
     list_filter = ['sexo_voluntario', 'estado_voluntario', 'cidade_voluntario']
@@ -53,13 +54,7 @@ class VoluntarioAdmin(admin.ModelAdmin):
 
     @admin.display(description='Tipo')
     def tipo_voluntario(self, obj):
-        if hasattr(obj, 'estagiario'):
-            return 'Estagiário'
-        elif hasattr(obj, 'advogado'):
-            return 'Advogado'
-        elif hasattr(obj, 'bacharel'):
-            return 'Bacharel'
-        return 'Voluntário'
+        return obj.tipo
     
 @admin.register(Estagiario)
 class EstagiarioAdmin(admin.ModelAdmin):
