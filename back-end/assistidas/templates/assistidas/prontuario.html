@@ -1,0 +1,35 @@
+{% extends "assistidas/base_interno.html" %}
+{% block titulo %}Prontuário — {{ assistida.nome_assistida }}{% endblock %}
+{% block conteudo %}
+<p><a href="{% url 'assistidas_lista' %}">← Voltar para a lista</a></p>
+<h1>Prontuário de {{ assistida.nome_assistida }}</h1>
+
+<div class="card">
+    <p class="meta" style="margin:0">
+        {% if assistida.apelido_assistida %}Prefere ser chamada de <strong>{{ assistida.apelido_assistida }}</strong> · {% endif %}
+        {{ assistida.idade_assistida }} anos · CPF {{ assistida.cpf_assistida }}<br>
+        {{ assistida.rua_assistida }}, {{ assistida.num_endereco_assistida }}{% if assistida.complemento_endereco_assistida %} — {{ assistida.complemento_endereco_assistida }}{% endif %}
+        · {{ assistida.cidade_assistida }}/{{ assistida.estado_assistida }} · CEP {{ assistida.cep_assistida }}
+    </p>
+</div>
+
+<div class="acoes">
+    <a class="btn" href="{% url 'admin:assistidas_registroprontuario_add' %}?id_assistida={{ assistida.pk }}">+ Novo registro</a>
+    <a class="btn sec" href="{% url 'admin:assistidas_assistida_change' assistida.pk %}">Editar cadastro</a>
+</div>
+
+{% for r in registros %}
+<div class="card">
+    <div class="registro-topo">
+        <div>
+            <strong>{{ r.id_autor.nomecompleto_voluntario }}</strong>
+            <span class="tag">{{ r.id_autor.tipo }}</span>
+        </div>
+        <span class="meta">{{ r.criado_em|date:"d/m/Y \à\s H:i" }}{% if r.atualizado_em|date:"U" != r.criado_em|date:"U" %} · editado em {{ r.atualizado_em|date:"d/m/Y H:i" }}{% endif %}</span>
+    </div>
+    <div>{{ r.texto|linebreaksbr }}</div>
+</div>
+{% empty %}
+<div class="card"><p class="vazio">Ainda não há registros no prontuário desta assistida.</p></div>
+{% endfor %}
+{% endblock %}

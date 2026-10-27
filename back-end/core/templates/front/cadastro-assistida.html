@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Vítimas - Superação da Violência Doméstica</title>
+    <title>Cadastro de Assistidas - Superação da Violência Doméstica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oregano:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <form class="victim-form" id="victimForm" method="post" action="{% url 'cadastro_vitima' %}">
+            <form class="victim-form" id="victimForm" method="post" action="{% url 'cadastro_assistida' %}">
                 {% csrf_token %}
                 <div class="form-grid">
                     <!-- Dados Pessoais -->
@@ -54,29 +54,29 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nome_vitima">Nome Completo *</label>
-                        <input type="text" id="nome_vitima" name="nome_vitima" required 
+                        <label for="nome_assistida">Nome Completo *</label>
+                        <input type="text" id="nome_assistida" name="nome_assistida" required 
                                pattern="[A-Za-zÀ-ÿ\s]+" 
                                title="Digite apenas letras e espaços">
                     </div>
 
                     <div class="form-group">
-                        <label for="apelido_vitima">Como gostaria de ser chamada? *</label>
-                        <input type="text" id="apelido_vitima" name="apelido_vitima" required 
+                        <label for="apelido_assistida">Como gostaria de ser chamada? *</label>
+                        <input type="text" id="apelido_assistida" name="apelido_assistida" required 
                                pattern="[A-Za-zÀ-ÿ\s]+" 
                                title="Digite apenas letras">
                     </div>
 
                     <div class="form-group">
-                        <label for="cpf_vitima">CPF *</label>
-                        <input type="text" id="cpf_vitima" name="cpf_vitima" required 
+                        <label for="cpf_assistida">CPF *</label>
+                        <input type="text" id="cpf_assistida" name="cpf_assistida" required 
                                placeholder="000.000.000-00" 
                                maxlength="14">
                     </div>
 
                     <div class="form-group">
-                        <label for="idade_vitima">Idade *</label>
-                        <input type="number" id="idade_vitima" name="idade_vitima" required 
+                        <label for="idade_assistida">Idade *</label>
+                        <input type="number" id="idade_assistida" name="idade_assistida" required 
                                min="1" max="120" 
                                placeholder="Ex: 25">
                     </div>
@@ -87,36 +87,36 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="cep_vitima">CEP *</label>
-                        <input type="text" id="cep_vitima" name="cep_vitima" required 
+                        <label for="cep_assistida">CEP *</label>
+                        <input type="text" id="cep_assistida" name="cep_assistida" required 
                                placeholder="00000-000" 
                                maxlength="9">
                     </div>
 
                     <div class="form-group">
-                        <label for="enderecorua_vitima">Rua/Avenida *</label>
-                        <input type="text" id="enderecorua_vitima" name="enderecorua_vitima" required 
+                        <label for="enderecorua_assistida">Rua/Avenida *</label>
+                        <input type="text" id="enderecorua_assistida" name="enderecorua_assistida" required 
                                maxlength="50" 
                                placeholder="Ex: Rua das Flores, 123">
                     </div>
 
                     <div class="form-group">
-                        <label for="enderecocomplemento_vitima">Complemento</label>
-                        <input type="text" id="enderecocomplemento_vitima" name="enderecocomplemento_vitima" 
+                        <label for="enderecocomplemento_assistida">Complemento</label>
+                        <input type="text" id="enderecocomplemento_assistida" name="enderecocomplemento_assistida" 
                                maxlength="20" 
                                placeholder="Ex: Apto 101, Bloco A">
                     </div>
 
                     <div class="form-group">
-                        <label for="enderecocidade_vitima">Cidade *</label>
-                        <input type="text" id="enderecocidade_vitima" name="enderecocidade_vitima" required 
+                        <label for="enderecocidade_assistida">Cidade *</label>
+                        <input type="text" id="enderecocidade_assistida" name="enderecocidade_assistida" required 
                                maxlength="30" 
                                placeholder="Ex: Rio de Janeiro">
                     </div>
 
                     <div class="form-group">
-                        <label for="enderecoestado_vitima">Estado *</label>
-                        <select id="enderecoestado_vitima" name="enderecoestado_vitima" required>
+                        <label for="enderecoestado_assistida">Estado *</label>
+                        <select id="enderecoestado_assistida" name="enderecoestado_assistida" required>
                             <option value="">Selecione...</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
